@@ -17,9 +17,9 @@ eDemarrer.addEventListener("click",function(){
 
     tableauJeu(eHauteur.value,eLongueur.value);
 
-    
-    serpent(aleatoire());
-    souris(aleatoire());
+    serpent(aleatoire);
+
+    //souris(aleatoire);
 
 
 });
