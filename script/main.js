@@ -5,6 +5,9 @@ import {aleatoire} from "./utiliter";
 console.log("main");
 
 let eDemarrer = document.getElementById("demarrer");
+
+
+
 eDemarrer.addEventListener("click",function(){
 
 
@@ -17,7 +20,7 @@ eDemarrer.addEventListener("click",function(){
 
     tableauJeu(eHauteur.value,eLongueur.value);
 
-    serpent(aleatoire);
+    serpent(eHauteur,eLongueur,aleatoire);
 
     //souris(aleatoire);
 

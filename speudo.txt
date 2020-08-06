@@ -1,0 +1,2 @@
+1 bouger le point vert sans supprimer l'ancien point vert[x]
+2 bouger le point vert en supprimant l'ancien point vert
