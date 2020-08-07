@@ -1,13 +1,13 @@
 export function souris (aleatoire) {
 
 
-    let eTd = document.getElementById("case"+aleatoire);
+    let random = aleatoire();
+    while (random === undefined) {
+        random = aleatoire();
+    }
 
-     if(eTd == null){
-        aleatoire = aleatoire -1;
-        eTd = document.getElementById("case"+aleatoire)
-    } 
-
-    console.log("je suis souris ", eTd);
-    eTd.style.backgroundColor = "red";
+    random.style.backgroundColor = "#708090";
+    random.setAttribute("id","souris");
+    
+   
 }

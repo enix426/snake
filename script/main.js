@@ -1,7 +1,6 @@
 import {tableauJeu} from "./tableauJeu";
 import {serpent} from "./serpent";
-import {souris} from "./souris";
-import {aleatoire} from "./utiliter";
+
 console.log("main");
 
 let eDemarrer = document.getElementById("demarrer");
@@ -20,9 +19,9 @@ eDemarrer.addEventListener("click",function(){
 
     tableauJeu(eHauteur.value,eLongueur.value);
 
-    serpent(eHauteur,eLongueur,aleatoire);
-
-    //souris(aleatoire);
+    serpent();
+    
+    
 
 
 });

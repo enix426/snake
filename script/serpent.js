@@ -1,10 +1,19 @@
-export function serpent(eHauteur,eLongueur,aleatoire) {
+import {souris} from "./souris";
+import {aleatoire} from "./utiliter";
+
+export function serpent() {
     let random = aleatoire();
     while (random === undefined) {
         random = aleatoire();
     }
     random.style.backgroundColor = "green";
+
+    //souris(aleatoire);
+/* creation du corps du serpent*/
+    let corpsSerpent = [];
+    const longueurCorps = 2;
     let teteSerpent = random;
+    corpsSerpent.push(teteSerpent);
     let valeurTete = teteSerpent.getAttribute("value");
     let eTableau = document.getElementById("tableau");
     let valeurTeteY = teteSerpent.parentElement.getAttribute("value");
@@ -13,6 +22,7 @@ export function serpent(eHauteur,eLongueur,aleatoire) {
         switch (direction) {
             case "droite":
                 console.log("droite");
+
                 valeurTete = parseInt(valeurTete, 10) + 1;
                 teteSerpent = teteSerpent.parentElement.querySelectorAll("td")[valeurTete];
                 break;
@@ -43,18 +53,29 @@ export function serpent(eHauteur,eLongueur,aleatoire) {
                 console.log("je ne bouge pas");
                 break;
         }
-        console.log(teteSerpent);
-
+        
         
         if(teteSerpent === undefined){
             console.log("je suis mort");
             arreteInterval();
 
-        } 
+        }else{
+            corpsSerpent.push(teteSerpent);
+            console.log(corpsSerpent);
+            teteSerpent.style.backgroundColor = "green";
+        }
 
-        teteSerpent.style.backgroundColor = "green";
-        console.log("teteSerpent",teteSerpent);
-        console.log(eTableau.querySelectorAll("tr").length);
+        if(corpsSerpent.length > 2){
+            
+            corpsSerpent[0].style.backgroundColor = "white";
+            corpsSerpent.shift();
+        } 
+        if(teteSerpent === document.getElementById("souris")){
+            console.log("j'ai manger la souris");
+            corpsSerpent.push(teteSerpent);
+            souris(aleatoire);
+        }
+
     }, 1000);
     document.addEventListener("keydown", event => {
         switch (event.keyCode) {
