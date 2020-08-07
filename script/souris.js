@@ -2,7 +2,7 @@ export function souris (aleatoire) {
 
 
     let random = aleatoire();
-    while (random === undefined) {
+    while (random === undefined || random.style.backgroundColor === "green") {
         random = aleatoire();
     }
 

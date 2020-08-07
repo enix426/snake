@@ -7,22 +7,24 @@ export function serpent() {
         random = aleatoire();
     }
     random.style.backgroundColor = "green";
-
-    //souris(aleatoire);
+    console.log(random.style.backgroundColor);
+    
+    souris(aleatoire);
 /* creation du corps du serpent*/
-    let corpsSerpent = [];
-    const longueurCorps = 2;
+    const corpsSerpent = [];
+    let longueurCorps = 2;
+/* fin creation du corps du serpent*/
     let teteSerpent = random;
     corpsSerpent.push(teteSerpent);
     let valeurTete = teteSerpent.getAttribute("value");
     let eTableau = document.getElementById("tableau");
     let valeurTeteY = teteSerpent.parentElement.getAttribute("value");
     let direction = false;
+
     let interval = setInterval(function () {
         switch (direction) {
             case "droite":
                 console.log("droite");
-
                 valeurTete = parseInt(valeurTete, 10) + 1;
                 teteSerpent = teteSerpent.parentElement.querySelectorAll("td")[valeurTete];
                 break;
@@ -60,23 +62,27 @@ export function serpent() {
             arreteInterval();
 
         }else{
-            corpsSerpent.push(teteSerpent);
-            console.log(corpsSerpent);
+            if(direction){
+                corpsSerpent.push(teteSerpent);                
+            }            
             teteSerpent.style.backgroundColor = "green";
         }
 
-        if(corpsSerpent.length > 2){
+        if(corpsSerpent.length > longueurCorps){
             
             corpsSerpent[0].style.backgroundColor = "white";
             corpsSerpent.shift();
         } 
+
         if(teteSerpent === document.getElementById("souris")){
             console.log("j'ai manger la souris");
-            corpsSerpent.push(teteSerpent);
+            longueurCorps += 1;
+            console.log(longueurCorps);
             souris(aleatoire);
         }
 
-    }, 1000);
+    }, 600);
+
     document.addEventListener("keydown", event => {
         switch (event.keyCode) {
             case 39:
